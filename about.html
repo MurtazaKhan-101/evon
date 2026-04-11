@@ -91,6 +91,7 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
 .ss-l{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px}
 .team-sec{padding:100px 60px;background:var(--deep);border-bottom:1px solid var(--border)}
 .team-grid{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.team-grid > .team-card:last-child:nth-child(odd){grid-column:1/-1}
 .team-card{background:var(--deep);padding:52px 44px;position:relative;overflow:hidden;transition:background .4s}
 .team-card:hover{background:var(--card)}
 .team-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left}
@@ -178,6 +179,13 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
       <div class="tc-badge">Business Strategy & Growth</div>
     </div>
     <div class="team-card reveal d2">
+      <div class="tc-av">S</div>
+      <div class="tc-name">Salman Ali Sheikh</div>
+      <div class="tc-role">Co-Founder & Chief Marketing Officer</div>
+      <p class="tc-bio">Salman Ali Sheikh serves as Co-Founder and Chief Marketing Officer, bringing a sharp strategic vision shaped by an MSc in Marketing and years of hands-on entrepreneurial experience. Having built and run businesses across multiple international markets, Salman combines academic rigor with real-world insight into what drives growth, brand resonance, and customer engagement at a global scale. His cross-cultural expertise and proven track record in scaling ventures position him as a driving force behind the company’s marketing strategy and international expansion.</p>
+      <div class="tc-badge">Marketing Strategy & International Expansion</div>
+    </div>
+    <div class="team-card reveal d3">
       <div class="tc-av">✦</div>
       <div class="tc-name">AI Research Advisor</div>
       <div class="tc-role">Stanford University — PhD Candidate</div>
