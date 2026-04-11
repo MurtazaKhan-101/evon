@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Aevon Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080808;--deep:#0d0d0d;--card:#111111;
+  --border:rgba(255,255,255,0.07);
+  --gold:#c9a96e;--gold-dim:rgba(201,169,110,0.12);
+  --white:#f5f2ee;--muted:rgba(245,242,238,0.45);
+  --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:999;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+.site-header.scrolled{background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom-color:var(--border)}
+.h-logo{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;flex-shrink:0}
+.h-logo b{color:var(--gold);font-weight:400}
+.h-nav{display:flex;align-items:center;gap:32px}
+.h-nav a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;white-space:nowrap;transition:color .25s}
+.h-nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--gold);transition:width .25s}
+.h-nav a:hover{color:var(--gold)}
+.h-nav a:hover::after{width:100%}
+.h-nav a.current{color:var(--gold)}
+.h-nav a.current::after{width:100%}
+.h-nav .h-cta{padding:8px 20px;border:1px solid var(--gold);color:var(--gold)!important;transition:background .25s,color .25s}
+.h-nav .h-cta::after{display:none!important}
+.h-nav .h-cta:hover{background:var(--gold);color:var(--black)!important}
+.h-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
+.h-burger span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s}
+.h-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.h-burger.open span:nth-child(2){opacity:0}
+.h-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.h-drawer{display:none;position:fixed;inset:0;z-index:998;background:rgba(8,8,8,0.98);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.h-drawer.open{display:flex}
+.h-drawer a{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--white);text-decoration:none;transition:color .25s}
+.h-drawer a:hover{color:var(--gold)}
+.h-drawer .d-cta{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:13px 36px;border:1px solid var(--gold);color:var(--gold);margin-top:8px}
+.btn-gold{padding:15px 38px;background:var(--gold);color:var(--black);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:opacity .3s}
+.btn-gold:hover{opacity:.85}
+.btn-outline{padding:15px 38px;border:1px solid rgba(245,242,238,.2);color:var(--muted);font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color .3s,color .3s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.sec-tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.sec-tag::before{content:'';width:28px;height:1px;background:var(--gold)}
+.sec-h{font-family:var(--serif);font-size:clamp(32px,5vw,62px);font-weight:300;line-height:1.08}
+.sec-h em{font-style:italic;color:var(--gold)}
+.site-footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--deep);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.f-logo{font-family:var(--serif);font-size:18px;color:var(--white);text-decoration:none;letter-spacing:.08em}
+.f-logo b{color:var(--gold);font-weight:400}
+.f-links{display:flex;gap:28px;flex-wrap:wrap}
+.f-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.f-links a:hover{color:var(--gold)}
+.f-copy{font-size:12px;color:var(--muted)}
+.f-legal{display:flex;gap:20px}
+.f-legal a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.f-legal a:hover{color:var(--gold)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}.d3{transition-delay:.3s!important}.d4{transition-delay:.4s!important}
+.from-left{opacity:0;transform:translateX(-36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.from-left.on{opacity:1;transform:none}
+.from-right{opacity:0;transform:translateX(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.from-right.on{opacity:1;transform:none}
+@media(min-width:769px) and (max-width:1100px){.site-header{padding:0 40px}.h-nav{gap:20px}.h-nav a{font-size:10px}.site-footer{padding:40px}}
+@media(max-width:768px){.site-header{padding:0 24px;height:64px}.h-nav{display:none}.h-burger{display:flex}.site-footer{padding:32px 24px;flex-direction:column;align-items:flex-start}}
+
+.ph{padding:150px 60px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 90% 40%,rgba(201,169,110,.05),transparent 70%)}
+.ph-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.ph-tag::before{content:'';width:36px;height:1px;background:var(--gold)}
+.ph h1{font-family:var(--serif);font-size:clamp(44px,7vw,92px);font-weight:300;line-height:.95;max-width:700px;opacity:0;animation:fadeUp 1s ease .4s forwards}
+.ph h1 em{font-style:italic;color:var(--gold)}
+.ph p{margin-top:28px;font-size:15px;line-height:1.75;color:var(--muted);max-width:520px;opacity:0;animation:fadeUp 1s ease .6s forwards}
+.story-sec{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;border-bottom:1px solid var(--border)}
+.s-label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.s-label::before{content:'';width:28px;height:1px;background:var(--gold)}
+.s-title{font-family:var(--serif);font-size:clamp(30px,4vw,50px);font-weight:300;line-height:1.1;margin-bottom:28px}
+.s-title em{font-style:italic;color:var(--gold)}
+.s-text{font-size:14px;line-height:1.9;color:var(--muted);margin-bottom:18px}
+.s-stats{display:flex;flex-direction:column;gap:2px;background:var(--border)}
+.ss{background:var(--deep);padding:32px 36px;transition:background .3s}
+.ss:hover{background:var(--card)}
+.ss-n{font-family:var(--serif);font-size:44px;font-weight:300;line-height:1}
+.ss-n b{color:var(--gold);font-weight:300}
+.ss-l{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px}
+.team-sec{padding:100px 60px;background:var(--deep);border-bottom:1px solid var(--border)}
+.team-grid{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border)}
+.team-card{background:var(--deep);padding:52px 44px;position:relative;overflow:hidden;transition:background .4s}
+.team-card:hover{background:var(--card)}
+.team-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.team-card:hover::after{transform:scaleX(1)}
+.tc-av{width:68px;height:68px;border-radius:50%;background:var(--gold-dim);border:1px solid rgba(201,169,110,.3);display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-family:var(--serif);font-size:26px;color:var(--gold)}
+.tc-name{font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:6px}
+.tc-role{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.tc-bio{font-size:13px;line-height:1.9;color:var(--muted);margin-bottom:22px}
+.tc-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid rgba(201,169,110,.3);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.tc-badge::before{content:'✦';font-size:7px}
+.values-sec{padding:100px 60px;border-bottom:1px solid var(--border)}
+.val-grid{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.val{background:var(--deep);padding:44px 36px;transition:background .3s}
+.val:hover{background:var(--card)}
+.val-icon{font-family:var(--serif);font-size:44px;color:var(--gold);margin-bottom:20px}
+.val-title{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:12px}
+.val-desc{font-size:13px;line-height:1.8;color:var(--muted)}
+.invest-sec{padding:100px 60px;background:var(--deep);border-bottom:1px solid var(--border)}
+.invest-inner{max-width:820px}
+.inv-title{font-family:var(--serif);font-size:clamp(30px,4vw,54px);font-weight:300;line-height:1.08;margin-bottom:24px}
+.inv-title em{font-style:italic;color:var(--gold)}
+.inv-desc{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:44px;max-width:620px}
+.inv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-bottom:44px}
+.inv-card{background:var(--deep);padding:36px;transition:background .3s}
+.inv-card:hover{background:var(--card)}
+.inv-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.inv-val{font-family:var(--serif);font-size:30px;font-weight:300;color:var(--white);margin-bottom:8px}
+.inv-val b{color:var(--gold);font-weight:300}
+.inv-info{font-size:13px;line-height:1.7;color:var(--muted)}
+.inv-btns{display:flex;gap:14px;flex-wrap:wrap}
+.cta-band{padding:90px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:48px;flex-wrap:wrap}
+.cta-h{font-family:var(--serif);font-size:clamp(36px,5vw,68px);font-weight:300;line-height:1.08}
+.cta-h em{font-style:italic;color:var(--gold)}
+@media(min-width:769px) and (max-width:1100px){.ph,.team-sec,.values-sec,.invest-sec,.cta-band{padding-left:40px;padding-right:40px}.story-sec{padding:80px 40px;grid-template-columns:1fr;gap:48px}.team-grid{grid-template-columns:1fr}.val-grid{grid-template-columns:1fr 1fr}.inv-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.ph{padding:110px 24px 60px}.ph h1{font-size:clamp(36px,10vw,52px)}.story-sec{padding:60px 24px;grid-template-columns:1fr;gap:40px}.team-sec,.values-sec,.invest-sec,.cta-band{padding:60px 24px}.team-grid,.val-grid,.inv-grid{grid-template-columns:1fr}.team-card{padding:36px 24px}.val{padding:36px 24px}.inv-card{padding:28px 20px}.inv-btns{flex-direction:column}.cta-band{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="h-drawer" id="drawer">
+  <a href="index.html" onclick="closeD()">Home</a>
+  <a href="services.html" onclick="closeD()">Services</a>
+  <a href="cases.html" onclick="closeD()">Case Studies</a>
+  <a href="about.html" onclick="closeD()">About</a>
+  <a href="contact.html" class="d-cta" onclick="closeD()">Book a Call</a>
+</div>
+<header class="site-header" id="siteHeader">
+  <a href="index.html" class="h-logo">Aevon<b>.</b></a>
+  <nav class="h-nav"><a href="index.html">Home</a><a href="services.html">Services</a><a href="cases.html">Case Studies</a><a href="about.html" class="current">About</a><a href="contact.html" class="h-cta">Book a Call</a></nav>
+  <button class="h-burger" id="burger" onclick="toggleD()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="ph">
+  <div class="ph-tag">About Aevon</div>
+  <h1>We exist to make<br><em>AI work</em><br>for every business.</h1>
+  <p>Aevon Intelligence was built because great AI shouldn't only be accessible to companies with 50-person engineering teams. We bridge the gap between world-class AI research and real business results.</p>
+</div>
+
+<section class="story-sec">
+  <div class="from-left">
+    <div class="s-label">Our Story</div>
+    <h2 class="s-title">Built out of a<br><em>clear gap</em> in the market.</h2>
+    <p class="s-text">We saw the same problem repeating across every industry: business owners knew AI could transform their operations, but had no practical path to implementation. Agencies were expensive, slow, and generic. In-house hiring was unaffordable. Off-the-shelf tools didn't fit.</p>
+    <p class="s-text">So we built Aevon Intelligence — an agency that moves at startup speed, delivers at enterprise quality, and treats every client's business like our own.</p>
+    <p class="s-text">Today we serve clients across UAE, UK, USA and Saudi Arabia, with every system grounded in cutting-edge AI research from Stanford University.</p>
+  </div>
+  <div class="s-stats from-right">
+    <div class="ss"><div class="ss-n">7<b>d</b></div><div class="ss-l">Average time from discovery call to live AI system</div></div>
+    <div class="ss"><div class="ss-n">4<b>+</b></div><div class="ss-l">Countries with active clients generating real ROI</div></div>
+    <div class="ss"><div class="ss-n">$220<b>B</b></div><div class="ss-l">Projected AI services market size by 2030</div></div>
+    <div class="ss"><div class="ss-n">100<b>%</b></div><div class="ss-l">Client retention rate in first 6 months</div></div>
+  </div>
+</section>
+
+<section class="team-sec">
+  <div class="sec-tag reveal">The Team</div>
+  <h2 class="sec-h reveal d1">Built by people who<br><em>live and breathe</em> AI.</h2>
+  <div class="team-grid">
+    <div class="team-card reveal d1">
+      <div class="tc-av">A</div>
+      <div class="tc-name">Ali Ather</div>
+      <div class="tc-role">Co-Founder & CEO</div>
+      <p class="tc-bio">Serial entrepreneur and AI agency builder with hands-on experience deploying AI systems for clients across UAE, UK and USA. Leads business strategy, client relationships, and commercial growth across global markets.</p>
+      <div class="tc-badge">Business Strategy & Growth</div>
+    </div>
+    <div class="team-card reveal d2">
+      <div class="tc-av">✦</div>
+      <div class="tc-name">AI Research Advisor</div>
+      <div class="tc-role">Stanford University — PhD Candidate</div>
+      <p class="tc-bio">Our technical direction is guided by an active PhD researcher in AI and Machine Learning at Stanford University, with published papers and citations in LLMs and deep learning. Brings world-class research depth to every system we build.</p>
+      <div class="tc-badge">Stanford University — AI & ML Research</div>
+    </div>
+  </div>
+</section>
+
+<section class="values-sec">
+  <div class="sec-tag reveal">What We Stand For</div>
+  <h2 class="sec-h reveal d1">Our <em>values.</em></h2>
+  <div class="val-grid">
+    <div class="val reveal d1"><div class="val-icon">01</div><h3 class="val-title">Speed Without Compromise</h3><p class="val-desc">Most agencies take 3 months to deliver. We go live in 7 days. Speed is not about cutting corners — it is about having the right systems in place before we start.</p></div>
+    <div class="val reveal d2"><div class="val-icon">02</div><h3 class="val-title">Research-Backed Building</h3><p class="val-desc">Every AI system we build is grounded in active academic research from Stanford. We do not follow trends — we build on proven methodology from the highest levels of AI science.</p></div>
+    <div class="val reveal d3"><div class="val-icon">03</div><h3 class="val-title">Results or Nothing</h3><p class="val-desc">We measure success in your numbers, not ours. Leads generated, hours saved, revenue created. If our systems do not move the needle, we do not consider the job done.</p></div>
+  </div>
+</section>
+
+<section class="invest-sec" id="investors">
+  <div class="invest-inner">
+    <div class="sec-tag reveal">For Investors</div>
+    <h2 class="inv-title reveal d1">We are raising our<br><em>pre-seed round.</em></h2>
+    <p class="inv-desc reveal d2">Aevon Intelligence is raising $100K–$150K pre-seed to scale our delivery team and accelerate client acquisition across the Gulf and global markets. We have paying clients, real financials, and our technical direction is guided by an active Stanford University AI PhD researcher with published papers in LLMs and machine learning.</p>
+    <div class="inv-grid reveal d3">
+      <div class="inv-card"><div class="inv-label">Raise Target</div><div class="inv-val">$100<b>K–$150K</b></div><div class="inv-info">Pre-seed round. SAFE note or convertible note. 10–20% equity offered.</div></div>
+      <div class="inv-card"><div class="inv-label">Use of Funds</div><div class="inv-val">3 <b>priorities</b></div><div class="inv-info">Hiring delivery specialists, scaling client acquisition, and building first SaaS product.</div></div>
+      <div class="inv-card"><div class="inv-label">Market Opportunity</div><div class="inv-val">$220<b>B</b></div><div class="inv-info">AI services market by 2030. SMB segment largely underserved by large consultancies.</div></div>
+      <div class="inv-card"><div class="inv-label">Traction</div><div class="inv-val">Live <b>clients</b></div><div class="inv-info">Paying clients across UAE, UK, USA and Saudi Arabia with documented results and real financials.</div></div>
+    </div>
+    <div class="inv-btns reveal d4">
+      <a href="mailto:invest@aevonintelligence.com" class="btn-gold">Request Investor Deck</a>
+      <a href="contact.html" class="btn-outline">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2 class="cta-h from-left">Ready to work<br><em>together?</em></h2>
+  <div style="display:flex;gap:14px;flex-wrap:wrap" class="from-right">
+    <a href="contact.html" class="btn-gold">Book Discovery Call</a>
+    <a href="cases.html" class="btn-outline">See Our Work</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <a href="index.html" class="f-logo">Aevon<b>.</b> Intelligence</a>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="f-copy">© 2025 Aevon Intelligence</div>
+  <div class="f-legal">
+    <a href="#" onclick="return false">Privacy</a>
+    <a href="#" onclick="return false">Terms</a>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('siteHeader').classList.toggle('scrolled',window.scrollY>50);
+});
+function toggleD(){
+  var d=document.getElementById('drawer');
+  var b=document.getElementById('burger');
+  d.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=d.classList.contains('open')?'hidden':'';
+}
+function closeD(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeD();});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal,.from-left,.from-right').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>

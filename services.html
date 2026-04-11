@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Aevon Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080808;--deep:#0d0d0d;--card:#111111;
+  --border:rgba(255,255,255,0.07);
+  --gold:#c9a96e;--gold-dim:rgba(201,169,110,0.12);
+  --white:#f5f2ee;--muted:rgba(245,242,238,0.45);
+  --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:999;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+.site-header.scrolled{background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom-color:var(--border)}
+.h-logo{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;flex-shrink:0}
+.h-logo b{color:var(--gold);font-weight:400}
+.h-nav{display:flex;align-items:center;gap:32px}
+.h-nav a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;white-space:nowrap;transition:color .25s}
+.h-nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--gold);transition:width .25s}
+.h-nav a:hover{color:var(--gold)}
+.h-nav a:hover::after{width:100%}
+.h-nav a.current{color:var(--gold)}
+.h-nav a.current::after{width:100%}
+.h-nav .h-cta{padding:8px 20px;border:1px solid var(--gold);color:var(--gold)!important;transition:background .25s,color .25s}
+.h-nav .h-cta::after{display:none!important}
+.h-nav .h-cta:hover{background:var(--gold);color:var(--black)!important}
+.h-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
+.h-burger span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s}
+.h-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.h-burger.open span:nth-child(2){opacity:0}
+.h-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.h-drawer{display:none;position:fixed;inset:0;z-index:998;background:rgba(8,8,8,0.98);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.h-drawer.open{display:flex}
+.h-drawer a{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--white);text-decoration:none;transition:color .25s}
+.h-drawer a:hover{color:var(--gold)}
+.h-drawer .d-cta{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:13px 36px;border:1px solid var(--gold);color:var(--gold);margin-top:8px}
+.btn-gold{padding:15px 38px;background:var(--gold);color:var(--black);font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:opacity .3s}
+.btn-gold:hover{opacity:.85}
+.btn-outline{padding:15px 38px;border:1px solid rgba(245,242,238,.2);color:var(--muted);font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:border-color .3s,color .3s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.sec-tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.sec-tag::before{content:'';width:28px;height:1px;background:var(--gold)}
+.sec-h{font-family:var(--serif);font-size:clamp(32px,5vw,62px);font-weight:300;line-height:1.08}
+.sec-h em{font-style:italic;color:var(--gold)}
+.site-footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--deep);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.f-logo{font-family:var(--serif);font-size:18px;color:var(--white);text-decoration:none;letter-spacing:.08em}
+.f-logo b{color:var(--gold);font-weight:400}
+.f-links{display:flex;gap:28px;flex-wrap:wrap}
+.f-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.f-links a:hover{color:var(--gold)}
+.f-copy{font-size:12px;color:var(--muted)}
+.f-legal{display:flex;gap:20px}
+.f-legal a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.f-legal a:hover{color:var(--gold)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}.d3{transition-delay:.3s!important}.d4{transition-delay:.4s!important}
+.from-left{opacity:0;transform:translateX(-36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.from-left.on{opacity:1;transform:none}
+.from-right{opacity:0;transform:translateX(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.from-right.on{opacity:1;transform:none}
+@media(min-width:769px) and (max-width:1100px){.site-header{padding:0 40px}.h-nav{gap:20px}.h-nav a{font-size:10px}.site-footer{padding:40px}}
+@media(max-width:768px){.site-header{padding:0 24px;height:64px}.h-nav{display:none}.h-burger{display:flex}.site-footer{padding:32px 24px;flex-direction:column;align-items:flex-start}}
+
+.ph{padding:150px 60px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 100% 50%,rgba(201,169,110,.05),transparent 70%)}
+.ph-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.ph-tag::before{content:'';width:36px;height:1px;background:var(--gold)}
+.ph h1{font-family:var(--serif);font-size:clamp(44px,7vw,92px);font-weight:300;line-height:.95;max-width:700px;opacity:0;animation:fadeUp 1s ease .4s forwards}
+.ph h1 em{font-style:italic;color:var(--gold)}
+.ph p{margin-top:28px;font-size:15px;line-height:1.75;color:var(--muted);max-width:480px;opacity:0;animation:fadeUp 1s ease .6s forwards}
+.svc-list{padding:80px 60px}
+.svc-card{display:grid;grid-template-columns:280px 1fr;background:var(--deep);border:1px solid var(--border);margin-bottom:2px;transition:background .3s}
+.svc-card:hover{background:var(--card)}
+.sc-left{padding:48px 40px;border-right:1px solid var(--border);position:relative}
+.sc-left::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.svc-card:hover .sc-left::after{transform:scaleX(1)}
+.sc-n{font-family:var(--serif);font-size:72px;font-weight:300;color:rgba(255,255,255,.06);line-height:1;margin-bottom:20px}
+.sc-name{font-family:var(--serif);font-size:26px;font-weight:400}
+.sc-price{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:20px}
+.sc-right{padding:48px 52px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-content:start}
+.sc-desc{font-size:14px;line-height:1.85;color:var(--muted);grid-column:1/-1}
+.sc-list-title{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sc-list{list-style:none}
+.sc-list li{font-size:13px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.sc-list li::before{content:'✦';color:var(--gold);font-size:7px;flex-shrink:0}
+.process-sec{padding:80px 60px;background:var(--deep);border-top:1px solid var(--border)}
+.proc-grid{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border)}
+.proc{background:var(--deep);padding:44px 32px;transition:background .3s;position:relative}
+.proc:hover{background:var(--card)}
+.proc-n{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.proc-title{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:12px;line-height:1.2}
+.proc-desc{font-size:13px;line-height:1.8;color:var(--muted)}
+.pricing-sec{padding:80px 60px;border-top:1px solid var(--border)}
+.price-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.price-card{background:var(--deep);padding:48px 40px;transition:background .3s}
+.price-card.feat{background:var(--card);border:1px solid rgba(201,169,110,.3)}
+.price-badge{font-size:10px;letter-spacing:.22em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:5px 14px;display:inline-block;margin-bottom:28px}
+.price-name{font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:6px}
+.price-amt{font-family:var(--serif);font-size:52px;font-weight:300;line-height:1}
+.price-amt sup{font-size:22px;vertical-align:top;margin-top:10px;color:var(--gold)}
+.price-per{font-size:12px;color:var(--muted);margin-bottom:36px;letter-spacing:.1em}
+.price-list{list-style:none;margin-bottom:36px}
+.price-list li{font-size:13px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.price-list li::before{content:'✦';color:var(--gold);font-size:8px;flex-shrink:0}
+.price-btn{display:block;width:100%;padding:15px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .3s,color .3s}
+.price-btn:hover,.price-card.feat .price-btn{background:var(--gold);color:var(--black)}
+.cta-band{padding:90px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:48px;flex-wrap:wrap}
+.cta-h{font-family:var(--serif);font-size:clamp(36px,5vw,68px);font-weight:300;line-height:1.08}
+.cta-h em{font-style:italic;color:var(--gold)}
+@media(min-width:769px) and (max-width:1100px){.ph,.svc-list,.process-sec,.pricing-sec,.cta-band{padding-left:40px;padding-right:40px}.svc-card{grid-template-columns:1fr}.sc-left{border-right:none;border-bottom:1px solid var(--border)}.sc-right{grid-template-columns:1fr;padding:36px 40px}.proc-grid{grid-template-columns:repeat(2,1fr)}.price-grid{grid-template-columns:1fr 1fr}.price-card:last-child{grid-column:1/-1;max-width:50%}}
+@media(max-width:768px){.ph{padding:110px 24px 60px}.ph h1{font-size:clamp(36px,10vw,52px)}.svc-list,.process-sec,.pricing-sec,.cta-band{padding:60px 24px}.svc-card{grid-template-columns:1fr}.sc-left{border-right:none;border-bottom:1px solid var(--border);padding:32px 24px}.sc-right{padding:32px 24px;grid-template-columns:1fr}.proc-grid,.price-grid{grid-template-columns:1fr}.cta-band{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="h-drawer" id="drawer">
+  <a href="index.html" onclick="closeD()">Home</a>
+  <a href="services.html" onclick="closeD()">Services</a>
+  <a href="cases.html" onclick="closeD()">Case Studies</a>
+  <a href="about.html" onclick="closeD()">About</a>
+  <a href="contact.html" class="d-cta" onclick="closeD()">Book a Call</a>
+</div>
+<header class="site-header" id="siteHeader">
+  <a href="index.html" class="h-logo">Aevon<b>.</b></a>
+  <nav class="h-nav"><a href="index.html">Home</a><a href="services.html" class="current">Services</a><a href="cases.html">Case Studies</a><a href="about.html">About</a><a href="contact.html" class="h-cta">Book a Call</a></nav>
+  <button class="h-burger" id="burger" onclick="toggleD()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="ph">
+  <div class="ph-tag">What We Build</div>
+  <h1>AI systems that<br><em>replace entire</em><br>departments.</h1>
+  <p>Six core solutions, each custom-built for your business and live within 7 days. Every system connects to your existing tools — no disruption, just results.</p>
+</div>
+
+<div class="svc-list">
+  <div class="svc-card reveal">
+    <div class="sc-left"><div class="sc-n">01</div><h3 class="sc-name">AI Sales Chatbot</h3><div class="sc-price">From $1,500 + $200/mo</div></div>
+    <div class="sc-right">
+      <p class="sc-desc">Your website and WhatsApp become a 24/7 sales machine. The AI engages every visitor instantly, qualifies them, and books appointments into your calendar — while you sleep.</p>
+      <div><div class="sc-list-title">What's Included</div><ul class="sc-list"><li>Custom conversation flows</li><li>Lead qualification logic</li><li>Calendar integration</li><li>WhatsApp & Instagram</li><li>Monthly dashboard</li></ul></div>
+      <div><div class="sc-list-title">Best For</div><ul class="sc-list"><li>Real estate agencies</li><li>Service businesses</li><li>E-commerce stores</li><li>Professional services</li></ul></div>
+    </div>
+  </div>
+  <div class="svc-card reveal">
+    <div class="sc-left"><div class="sc-n">02</div><h3 class="sc-name">Outreach Automation</h3><div class="sc-price">From $2,000 + $300/mo</div></div>
+    <div class="sc-right">
+      <p class="sc-desc">Stop sending generic cold emails. Our system identifies your ideal clients daily, writes hyper-personalised outreach, and runs a 5-step follow-up sequence automatically.</p>
+      <div><div class="sc-list-title">What's Included</div><ul class="sc-list"><li>AI prospect identification</li><li>Personalised copywriting</li><li>5-step follow-up sequence</li><li>Reply detection & routing</li><li>Weekly performance report</li></ul></div>
+      <div><div class="sc-list-title">Expected Results</div><ul class="sc-list"><li>5–8% reply rates</li><li>20+ calls per month</li><li>Zero manual prospecting</li><li>Full pipeline visibility</li></ul></div>
+    </div>
+  </div>
+  <div class="svc-card reveal">
+    <div class="sc-left"><div class="sc-n">03</div><h3 class="sc-name">AI Voice Agent</h3><div class="sc-price">From $3,000 + $400/mo</div></div>
+    <div class="sc-right">
+      <p class="sc-desc">An AI voice agent that sounds natural, handles objections, and transfers hot leads to your team. Available 24/7 with zero hold times for inbound and outbound calls.</p>
+      <div><div class="sc-list-title">What's Included</div><ul class="sc-list"><li>Custom voice & personality</li><li>Inbound & outbound calling</li><li>Objection handling scripts</li><li>Live transfer to human agents</li><li>Full call recording & transcripts</li></ul></div>
+      <div><div class="sc-list-title">Best For</div><ul class="sc-list"><li>High-volume lead businesses</li><li>Medical & dental clinics</li><li>Insurance agencies</li><li>Financial services</li></ul></div>
+    </div>
+  </div>
+  <div class="svc-card reveal">
+    <div class="sc-left"><div class="sc-n">04</div><h3 class="sc-name">Full CRM Automation</h3><div class="sc-price">From $2,500 + $300/mo</div></div>
+    <div class="sc-right">
+      <p class="sc-desc">We automate every step of the post-call pipeline — contract sending, follow-up sequences, review requests, and pipeline management — so nothing falls through the cracks.</p>
+      <div><div class="sc-list-title">What's Included</div><ul class="sc-list"><li>CRM setup & integration</li><li>Automated contract sending</li><li>Post-call follow-up sequences</li><li>Review request automation</li><li>Pipeline reporting dashboard</li></ul></div>
+      <div><div class="sc-list-title">Compatible With</div><ul class="sc-list"><li>HubSpot</li><li>GoHighLevel</li><li>Pipedrive</li><li>Notion & more</li></ul></div>
+    </div>
+  </div>
+  <div class="svc-card reveal">
+    <div class="sc-left"><div class="sc-n">05</div><h3 class="sc-name">Content AI System</h3><div class="sc-price">From $800/mo</div></div>
+    <div class="sc-right">
+      <p class="sc-desc">Our AI creates on-brand posts, schedules them across your platforms, and replies to comments and DMs automatically. 10+ hours saved per week, instantly.</p>
+      <div><div class="sc-list-title">What's Included</div><ul class="sc-list"><li>AI content creation</li><li>Multi-platform scheduling</li><li>Brand voice training</li><li>Comment & DM auto-replies</li><li>Monthly content calendar</li></ul></div>
+      <div><div class="sc-list-title">Platforms</div><ul class="sc-list"><li>LinkedIn</li><li>Instagram</li><li>X (Twitter)</li><li>Facebook & more</li></ul></div>
+    </div>
+  </div>
+  <div class="svc-card reveal">
+    <div class="sc-left"><div class="sc-n">06</div><h3 class="sc-name">Custom AI Stack</h3><div class="sc-price">From $8,000</div></div>
+    <div class="sc-right">
+      <p class="sc-desc">For businesses with complex, multi-department automation needs. We map your entire operation and build a fully integrated AI ecosystem. Discovery call required.</p>
+      <div><div class="sc-list-title">What's Included</div><ul class="sc-list"><li>Full business process audit</li><li>Multi-system integration</li><li>Custom model fine-tuning</li><li>Dedicated project manager</li><li>6-month support included</li></ul></div>
+      <div><div class="sc-list-title">Who This Is For</div><ul class="sc-list"><li>$500K+ revenue businesses</li><li>Multi-department operations</li><li>Serious operators only</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<section class="process-sec">
+  <div class="sec-tag reveal">How It Works</div>
+  <h2 class="sec-h reveal d1">Live in <em>7 days.</em></h2>
+  <div class="proc-grid">
+    <div class="proc reveal d1"><div class="proc-n">01 — Discovery</div><h3 class="proc-title">We map your business</h3><p class="proc-desc">30-minute call to identify exactly which processes to automate and what ROI to expect from day one.</p></div>
+    <div class="proc reveal d2"><div class="proc-n">02 — Build</div><h3 class="proc-title">We build your system</h3><p class="proc-desc">Our team builds your custom AI stack, connects it to your tools, and tests every flow before delivery.</p></div>
+    <div class="proc reveal d3"><div class="proc-n">03 — Launch</div><h3 class="proc-title">We go live together</h3><p class="proc-desc">We deploy, walk you through every feature, and monitor the first 48 hours closely alongside you.</p></div>
+    <div class="proc reveal d4"><div class="proc-n">04 — Scale</div><h3 class="proc-title">We optimize & expand</h3><p class="proc-desc">Monthly check-ins, performance reports, and continuous improvements as your business grows.</p></div>
+  </div>
+</section>
+
+<section class="pricing-sec">
+  <div class="sec-tag reveal">Pricing</div>
+  <h2 class="sec-h reveal d1">Transparent <em>pricing.</em></h2>
+  <p style="margin-top:14px;font-size:14px;color:var(--muted);max-width:480px" class="reveal d2">No hidden fees. No long contracts. Cancel anytime after month 3.</p>
+  <div class="price-grid">
+    <div class="price-card reveal d1">
+      <div class="price-name">Starter</div>
+      <div class="price-amt"><sup>$</sup>1,500</div>
+      <div class="price-per">One-time + $200/month</div>
+      <ul class="price-list"><li>AI chatbot for your website</li><li>Lead qualification flows</li><li>Calendly integration</li><li>WhatsApp connection</li><li>Monthly performance report</li></ul>
+      <a href="contact.html" class="price-btn">Get Started</a>
+    </div>
+    <div class="price-card feat reveal d2">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-name">Growth</div>
+      <div class="price-amt"><sup>$</sup>3,000</div>
+      <div class="price-per">One-time + $400/month</div>
+      <ul class="price-list"><li>Everything in Starter</li><li>Outreach automation</li><li>AI reply & follow-up agent</li><li>CRM integration</li><li>Contract & invoice automation</li><li>Priority support</li></ul>
+      <a href="contact.html" class="price-btn">Get Started</a>
+    </div>
+    <div class="price-card reveal d3">
+      <div class="price-name">Enterprise</div>
+      <div class="price-amt"><sup>$</sup>8,000</div>
+      <div class="price-per">Custom + monthly retainer</div>
+      <ul class="price-list"><li>Everything in Growth</li><li>AI voice agent</li><li>Full custom AI stack</li><li>Multi-platform automation</li><li>Dedicated account manager</li><li>Weekly strategy calls</li></ul>
+      <a href="contact.html" class="price-btn">Book Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2 class="cta-h from-left">Not sure which<br><em>package fits?</em></h2>
+  <div style="display:flex;gap:14px;flex-wrap:wrap" class="from-right">
+    <a href="contact.html" class="btn-gold">Book Free Discovery Call</a>
+    <a href="cases.html" class="btn-outline">See Client Results</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <a href="index.html" class="f-logo">Aevon<b>.</b> Intelligence</a>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="f-copy">© 2025 Aevon Intelligence</div>
+  <div class="f-legal">
+    <a href="#" onclick="return false">Privacy</a>
+    <a href="#" onclick="return false">Terms</a>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('siteHeader').classList.toggle('scrolled',window.scrollY>50);
+});
+function toggleD(){
+  var d=document.getElementById('drawer');
+  var b=document.getElementById('burger');
+  d.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=d.classList.contains('open')?'hidden':'';
+}
+function closeD(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeD();});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal,.from-left,.from-right').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
