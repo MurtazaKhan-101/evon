@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — Aevon Intelligence</title>
+<title>Services — Evon Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -16,10 +16,11 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden}
-.site-header{position:fixed;top:0;left:0;right:0;z-index:999;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:999;height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
 .site-header.scrolled{background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom-color:var(--border)}
-.h-logo{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;flex-shrink:0}
+.h-logo{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;flex-shrink:0;display:flex;align-items:center}
 .h-logo b{color:var(--gold);font-weight:400}
+.h-logo-mark{height:68px;width:auto;display:block}
 .h-nav{display:flex;align-items:center;gap:32px}
 .h-nav a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;white-space:nowrap;transition:color .25s}
 .h-nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--gold);transition:width .25s}
@@ -67,7 +68,7 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
 .from-right{opacity:0;transform:translateX(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
 .from-right.on{opacity:1;transform:none}
 @media(min-width:769px) and (max-width:1100px){.site-header{padding:0 40px}.h-nav{gap:20px}.h-nav a{font-size:10px}.site-footer{padding:40px}}
-@media(max-width:768px){.site-header{padding:0 24px;height:64px}.h-nav{display:none}.h-burger{display:flex}.site-footer{padding:32px 24px;flex-direction:column;align-items:flex-start}}
+@media(max-width:768px){.site-header{padding:0 24px;height:88px}.h-nav{display:none}.h-burger{display:flex}.site-footer{padding:32px 24px;flex-direction:column;align-items:flex-start}}
 
 .ph{padding:150px 60px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 100% 50%,rgba(201,169,110,.05),transparent 70%)}
@@ -128,7 +129,7 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
   <a href="contact.html" class="d-cta" onclick="closeD()">Book a Call</a>
 </div>
 <header class="site-header" id="siteHeader">
-  <a href="index.html" class="h-logo">Aevon<b>.</b></a>
+  <a href="index.html" class="h-logo"><img src="evon-logo.svg" alt="Evon Intelligence" class="h-logo-mark"></a>
   <nav class="h-nav"><a href="index.html">Home</a><a href="services.html" class="current">Services</a><a href="cases.html">Case Studies</a><a href="about.html">About</a><a href="contact.html" class="h-cta">Book a Call</a></nav>
   <button class="h-burger" id="burger" onclick="toggleD()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -242,7 +243,7 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
 </div>
 
 <footer class="site-footer">
-  <a href="index.html" class="f-logo">Aevon<b>.</b> Intelligence</a>
+  <a href="index.html" class="f-logo">Evon<b>.</b> Intelligence</a>
   <div class="f-links">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
@@ -250,7 +251,7 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
-  <div class="f-copy">© 2025 Aevon Intelligence</div>
+  <div class="f-copy">© 2026 Evon Intelligence</div>
   <div class="f-legal">
     <a href="#" onclick="return false">Privacy</a>
     <a href="#" onclick="return false">Terms</a>
