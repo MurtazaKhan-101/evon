@@ -882,7 +882,9 @@ var ioToc = new IntersectionObserver(function (entries) {
       var active = document.querySelector('.toc-link[href="#' + id + '"]');
       if (active) {
         active.classList.add('active');
-        active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        if (window.innerWidth > 768) {
+          active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
       }
     }
   });
