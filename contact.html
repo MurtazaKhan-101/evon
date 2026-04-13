@@ -31,6 +31,8 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
 .h-nav .h-cta{padding:8px 20px;border:1px solid var(--gold);color:var(--gold)!important;transition:background .25s,color .25s}
 .h-nav .h-cta::after{display:none!important}
 .h-nav .h-cta:hover{background:var(--gold);color:var(--black)!important}
+.h-divider{width:1px;height:14px;background:var(--border);flex-shrink:0;margin:0 6px}
+.h-drawer a.d-legal{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:0}
 .h-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
 .h-burger span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s}
 .h-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
@@ -134,11 +136,13 @@ body{background:var(--black);color:var(--white);font-family:var(--sans);font-wei
   <a href="services.html" onclick="closeD()">Services</a>
   <a href="cases.html" onclick="closeD()">Case Studies</a>
   <a href="about.html" onclick="closeD()">About</a>
+  <a href="privacy.html" class="d-legal" onclick="closeD()">Privacy</a>
+  <a href="terms.html" class="d-legal" onclick="closeD()">Terms</a>
   <a href="contact.html" class="d-cta" onclick="closeD()">Book a Call</a>
 </div>
 <header class="site-header" id="siteHeader">
   <a href="index.html" class="h-logo"><img src="evon-logo.svg" alt="Evon Intelligence" class="h-logo-mark"></a>
-  <nav class="h-nav"><a href="index.html">Home</a><a href="services.html">Services</a><a href="cases.html">Case Studies</a><a href="about.html">About</a><a href="contact.html" class="h-cta">Book a Call</a></nav>
+  <nav class="h-nav"><a href="index.html">Home</a><a href="services.html">Services</a><a href="cases.html">Case Studies</a><a href="about.html">About</a><span class="h-divider"></span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html" class="h-cta">Book a Call</a></nav>
   <button class="h-burger" id="burger" onclick="toggleD()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -251,8 +255,8 @@ function faqT(btn){
   </div>
   <div class="f-copy">© 2026 evon Intelligence</div>
   <div class="f-legal">
-    <a href="#" onclick="return false">Privacy</a>
-    <a href="#" onclick="return false">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
   </div>
 </footer>
 <script>

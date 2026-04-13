@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — Evon Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080808;--deep:#0d0d0d;--card:#111111;
+  --border:rgba(255,255,255,0.07);
+  --gold:#c9a96e;--gold-dim:rgba(201,169,110,0.12);
+  --white:#f5f2ee;--muted:rgba(245,242,238,0.45);
+  --serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* ── HEADER ── */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:999;height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+.site-header.scrolled{background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom-color:var(--border)}
+.h-logo{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;flex-shrink:0;display:flex;align-items:center}
+.h-logo b{color:var(--gold);font-weight:400}
+.h-logo-mark{height:68px;width:auto;display:block}
+.h-nav{display:flex;align-items:center;gap:32px}
+.h-nav a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;position:relative;white-space:nowrap;transition:color .25s}
+.h-nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--gold);transition:width .25s}
+.h-nav a:hover{color:var(--gold)}
+.h-nav a:hover::after{width:100%}
+.h-nav .h-cta{padding:8px 20px;border:1px solid var(--gold);color:var(--gold)!important;transition:background .25s,color .25s}
+.h-nav .h-cta::after{display:none!important}
+.h-nav .h-cta:hover{background:var(--gold);color:var(--black)!important}
+.h-divider{width:1px;height:14px;background:var(--border);flex-shrink:0;margin:0 6px}
+.h-drawer a.d-legal{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:0}
+.h-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
+.h-burger span{display:block;width:22px;height:1px;background:var(--white);transition:all .3s}
+.h-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.h-burger.open span:nth-child(2){opacity:0}
+.h-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.h-drawer{display:none;position:fixed;inset:0;z-index:998;background:rgba(8,8,8,0.98);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.h-drawer.open{display:flex}
+.h-drawer a{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--white);text-decoration:none;transition:color .25s}
+.h-drawer a:hover{color:var(--gold)}
+.h-drawer .d-cta{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:13px 36px;border:1px solid var(--gold);color:var(--gold);margin-top:8px}
+
+/* ── PAGE HERO ── */
+.ph{padding:150px 60px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.ph::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 90% 40%,rgba(201,169,110,.05),transparent 70%)}
+.ph-tag{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.ph-tag::before{content:'';width:36px;height:1px;background:var(--gold)}
+.ph h1{font-family:var(--serif);font-size:clamp(44px,7vw,92px);font-weight:300;line-height:.95;max-width:700px;opacity:0;animation:fadeUp 1s ease .4s forwards}
+.ph h1 em{font-style:italic;color:var(--gold)}
+.ph-meta{margin-top:28px;font-size:13px;color:var(--muted);letter-spacing:.06em;opacity:0;animation:fadeUp 1s ease .6s forwards}
+
+/* ── LAYOUT ── */
+.doc-wrap{display:grid;grid-template-columns:280px 1fr;gap:0;min-height:60vh;border-bottom:1px solid var(--border)}
+
+/* ── SIDEBAR / TOC ── */
+.doc-toc{border-right:1px solid var(--border);padding:56px 40px;position:sticky;top:84px;height:calc(100vh - 84px);overflow-y:auto;background:var(--deep)}
+.doc-toc::-webkit-scrollbar{width:4px}
+.doc-toc::-webkit-scrollbar-track{background:transparent}
+.doc-toc::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.toc-label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:10px}
+.toc-label::before{content:'';width:20px;height:1px;background:var(--gold)}
+.toc-list{list-style:none}
+.toc-list li{margin-bottom:2px}
+.toc-list a{display:flex;align-items:baseline;gap:10px;font-size:12px;color:var(--muted);text-decoration:none;padding:7px 10px;border-left:2px solid transparent;transition:color .25s,border-color .25s,background .25s;letter-spacing:.03em;line-height:1.4}
+.toc-list a:hover{color:var(--white);border-left-color:var(--gold);background:rgba(201,169,110,.04)}
+.toc-list a.active{color:var(--gold);border-left-color:var(--gold);background:var(--gold-dim)}
+.toc-num{font-family:var(--serif);font-size:13px;color:rgba(201,169,110,.4);flex-shrink:0;min-width:18px}
+.toc-list a.active .toc-num{color:var(--gold)}
+
+/* ── CONTENT ── */
+.doc-content{padding:56px 72px 100px}
+.doc-section{padding-top:20px;margin-bottom:72px;scroll-margin-top:108px}
+.doc-section:last-child{margin-bottom:0}
+.ds-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.ds-num{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold-dim);line-height:1;flex-shrink:0;width:64px}
+.ds-titles{}
+.ds-tag{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.ds-title{font-family:var(--serif);font-size:clamp(22px,2.8vw,34px);font-weight:300;line-height:1.1}
+.ds-title em{font-style:italic;color:var(--gold)}
+.doc-body{font-size:14px;line-height:1.9;color:var(--muted)}
+.doc-body p{margin-bottom:16px}
+.doc-body p:last-child{margin-bottom:0}
+.doc-body strong{color:var(--white);font-weight:500}
+.doc-body a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.3);transition:border-color .25s}
+.doc-body a:hover{border-bottom-color:var(--gold)}
+
+/* Sub-sections */
+.sub-sec{margin-top:32px}
+.sub-sec-title{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sub-sec-title::before{content:'';width:16px;height:1px;background:var(--gold);flex-shrink:0}
+
+/* Bullet lists */
+.doc-list{list-style:none;margin:12px 0 20px}
+.doc-list li{position:relative;padding-left:20px;font-size:14px;line-height:1.8;color:var(--muted);margin-bottom:4px}
+.doc-list li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:1px;background:var(--gold)}
+
+/* Highlight / note block */
+.doc-note{background:var(--gold-dim);border-left:2px solid var(--gold);padding:20px 24px;margin:28px 0;border-radius:0 2px 2px 0}
+.doc-note p{font-size:13px;line-height:1.8;color:var(--white);margin:0}
+.doc-note strong{color:var(--gold)}
+
+/* Warning block (caps disclaimers) */
+.doc-warn{background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.2);padding:24px 28px;margin:28px 0;border-radius:2px}
+.doc-warn p{font-size:12px;line-height:2;color:rgba(245,242,238,0.6);margin:0;letter-spacing:.02em}
+.doc-warn strong{color:var(--white);font-weight:500}
+
+/* Two-col grid for rights */
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.rights-card{background:var(--card);border:1px solid var(--border);padding:20px 22px;border-radius:2px;transition:border-color .25s}
+.rights-card:hover{border-color:rgba(201,169,110,.3)}
+.rights-card-label{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.rights-card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+
+/* Inline badge */
+.badge{display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);padding:2px 8px;margin-left:6px;vertical-align:middle}
+
+/* Contact card */
+.contact-card{background:var(--card);border:1px solid var(--border);padding:32px;margin-top:32px}
+.contact-card-title{font-family:var(--serif);font-size:20px;font-weight:300;margin-bottom:20px;color:var(--white)}
+.contact-row{display:flex;gap:12px;margin-bottom:10px;align-items:baseline}
+.contact-row span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);width:80px;flex-shrink:0}
+.contact-row a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .25s}
+.contact-row a:hover{color:var(--gold)}
+
+/* Acceptance banner */
+.accept-banner{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 60px;text-align:center;margin-top:0}
+.accept-banner p{font-family:var(--serif);font-size:clamp(16px,2vw,20px);font-weight:300;color:var(--muted);line-height:1.7;max-width:680px;margin:0 auto}
+.accept-banner p em{color:var(--gold);font-style:italic}
+
+/* ── FOOTER ── */
+.site-footer{padding:44px 60px;border-top:1px solid var(--border);background:var(--deep);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.f-logo{font-family:var(--serif);font-size:18px;color:var(--white);text-decoration:none;letter-spacing:.08em}
+.f-logo b{color:var(--gold);font-weight:400}
+.f-links{display:flex;gap:28px;flex-wrap:wrap}
+.f-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.f-links a:hover{color:var(--gold)}
+.f-copy{font-size:12px;color:var(--muted)}
+.f-legal{display:flex;gap:20px}
+.f-legal a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.f-legal a:hover{color:var(--gold)}
+.f-legal a.current{color:var(--gold)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.on{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(min-width:769px) and (max-width:1100px){
+  .site-header{padding:0 40px}
+  .h-nav{gap:22px}
+  .ph{padding:120px 40px 60px}
+  .doc-wrap{grid-template-columns:240px 1fr}
+  .doc-toc{padding:40px 28px}
+  .doc-content{padding:40px 48px 80px}
+  .rights-grid{grid-template-columns:1fr}
+  .accept-banner{padding:32px 40px}
+  .site-footer{padding:40px}
+}
+@media(max-width:768px){
+  .site-header{padding:0 24px;height:88px}
+  .h-nav{display:none}
+  .h-burger{display:flex}
+  .ph{padding:110px 24px 56px}
+  .doc-wrap{grid-template-columns:1fr}
+  .doc-toc{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:32px 24px}
+  .doc-content{padding:40px 24px 72px}
+  .ds-num{font-size:36px;width:48px}
+  .rights-grid{grid-template-columns:1fr}
+  .accept-banner{padding:32px 24px}
+  .site-footer{padding:32px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE DRAWER -->
+<div class="h-drawer" id="drawer">
+  <a href="index.html" onclick="closeD()">Home</a>
+  <a href="services.html" onclick="closeD()">Services</a>
+  <a href="cases.html" onclick="closeD()">Case Studies</a>
+  <a href="about.html" onclick="closeD()">About</a>
+  <a href="privacy.html" class="d-legal" onclick="closeD()">Privacy</a>
+  <a href="terms.html" class="d-legal current" onclick="closeD()">Terms</a>
+  <a href="contact.html" class="d-cta" onclick="closeD()">Book a Call</a>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <a href="index.html" class="h-logo"><img src="evon-logo.svg" alt="Evon Intelligence" class="h-logo-mark"></a>
+  <nav class="h-nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="about.html">About</a>
+    <span class="h-divider"></span>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html" class="current">Terms</a>
+    <a href="contact.html" class="h-cta">Book a Call</a>
+  </nav>
+  <button class="h-burger" id="burger" onclick="toggleD()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- PAGE HERO -->
+<section class="ph">
+  <div class="ph-tag">Legal &amp; Compliance</div>
+  <h1>Terms &amp; <em>Conditions</em></h1>
+  <p class="ph-meta">Last Updated: April 13, 2026 &nbsp;·&nbsp; Evon Intelligence</p>
+</section>
+
+<!-- DOCUMENT -->
+<div class="doc-wrap">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="doc-toc" id="docToc">
+    <div class="toc-label">Contents</div>
+    <ul class="toc-list" id="tocList">
+      <li><a href="#s1"  class="toc-link"><span class="toc-num">01</span>Agreement to Terms</a></li>
+      <li><a href="#s2"  class="toc-link"><span class="toc-num">02</span>Description of Services</a></li>
+      <li><a href="#s3"  class="toc-link"><span class="toc-num">03</span>Eligibility &amp; Registration</a></li>
+      <li><a href="#s4"  class="toc-link"><span class="toc-num">04</span>Use of Services</a></li>
+      <li><a href="#s5"  class="toc-link"><span class="toc-num">05</span>Intellectual Property</a></li>
+      <li><a href="#s6"  class="toc-link"><span class="toc-num">06</span>Custom Development</a></li>
+      <li><a href="#s7"  class="toc-link"><span class="toc-num">07</span>SaaS &amp; Subscriptions</a></li>
+      <li><a href="#s8"  class="toc-link"><span class="toc-num">08</span>Fees &amp; Payment</a></li>
+      <li><a href="#s9"  class="toc-link"><span class="toc-num">09</span>Confidentiality</a></li>
+      <li><a href="#s10" class="toc-link"><span class="toc-num">10</span>Warranties &amp; Disclaimers</a></li>
+      <li><a href="#s11" class="toc-link"><span class="toc-num">11</span>Limitation of Liability</a></li>
+      <li><a href="#s12" class="toc-link"><span class="toc-num">12</span>Indemnification</a></li>
+      <li><a href="#s13" class="toc-link"><span class="toc-num">13</span>AI &amp; ML Specific Terms</a></li>
+      <li><a href="#s14" class="toc-link"><span class="toc-num">14</span>Data Protection</a></li>
+      <li><a href="#s15" class="toc-link"><span class="toc-num">15</span>Term &amp; Termination</a></li>
+      <li><a href="#s16" class="toc-link"><span class="toc-num">16</span>Export Controls</a></li>
+      <li><a href="#s17" class="toc-link"><span class="toc-num">17</span>Dispute Resolution</a></li>
+      <li><a href="#s18" class="toc-link"><span class="toc-num">18</span>Force Majeure</a></li>
+      <li><a href="#s19" class="toc-link"><span class="toc-num">19</span>General Provisions</a></li>
+      <li><a href="#s20" class="toc-link"><span class="toc-num">20</span>Accessibility</a></li>
+      <li><a href="#s21" class="toc-link"><span class="toc-num">21</span>Feedback &amp; Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="doc-content">
+
+    <!-- 1 -->
+    <div class="doc-section reveal" id="s1">
+      <div class="ds-header">
+        <div class="ds-num">01</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Binding Agreement</div>
+          <h2 class="ds-title">Agreement <em>to terms</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Evon Intelligence ("Company," "we," "our," or "us") governing your access to and use of our website <a href="https://aevonintelligence.netlify.app">aevonintelligences.netlify.app</a> and any services, products, or content we provide (collectively, the "Services").</p>
+        <p>By accessing or using our Site or Services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not use our Site or Services.</p>
+        <p>We reserve the right to modify these Terms at any time. We will notify you of changes by posting the updated Terms on this page with a new "Last Updated" date. Your continued use of the Services after changes are posted constitutes your acceptance of the modified Terms.</p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="doc-section reveal" id="s2">
+      <div class="ds-header">
+        <div class="ds-num">02</div>
+        <div class="ds-titles">
+          <div class="ds-tag">What We Offer</div>
+          <h2 class="ds-title">Description <em>of services</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Software Development</div>
+          <ul class="doc-list">
+            <li>Custom software development and engineering</li>
+            <li>Mobile application development (iOS, Android, cross-platform)</li>
+            <li>Web application development (responsive, progressive web apps)</li>
+            <li>Full-stack development and system architecture consulting</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Artificial Intelligence Services</div>
+          <ul class="doc-list">
+            <li>AI model development, deployment, and consulting</li>
+            <li>Machine learning, NLP, and computer vision solutions</li>
+            <li>Predictive analytics, forecasting, and AI as a Service (AIaaS)</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">SaaS Platforms</div>
+          <ul class="doc-list">
+            <li><strong>UltraStock AI</strong> — Inventory management and demand forecasting</li>
+            <li><strong>VeriSight</strong> — Deepfake detection and content verification</li>
+            <li>Business automation tools and custom SaaS platform development</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Cybersecurity &amp; Business Automation</div>
+          <ul class="doc-list">
+            <li>Deepfake detection and prevention; security audits and penetration testing</li>
+            <li>Workflow automation, document processing, and intelligent routing</li>
+            <li>Custom chatbot development and API integration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="doc-section reveal" id="s3">
+      <div class="ds-header">
+        <div class="ds-num">03</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Access Requirements</div>
+          <h2 class="ds-title">Eligibility &amp; <em>registration</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Eligibility</div>
+          <p>You must be at least 18 years old and have the legal capacity to enter into binding contracts to use our Services. By using our Services, you represent and warrant that you meet these requirements.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Account Registration</div>
+          <p>When creating an account, you agree to provide accurate and complete information, maintain the security of your login credentials, and notify us immediately of any unauthorised use. You are responsible for all activities that occur under your account. You may not use another person's account, create multiple accounts for fraudulent purposes, or share your credentials with others.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Business Accounts</div>
+          <p>If you are registering on behalf of a business or organisation, you represent that you have the authority to bind that entity to these Terms. We reserve the right to suspend or terminate accounts that engage in fraudulent, abusive, or illegal activities.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="doc-section reveal" id="s4">
+      <div class="ds-header">
+        <div class="ds-num">04</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Acceptable Use</div>
+          <h2 class="ds-title">Use <em>of services</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">License Grant</div>
+          <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use our Services for your personal or internal business purposes.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Acceptable Use — You agree NOT to:</div>
+          <ul class="doc-list">
+            <li>Violate any applicable laws, regulations, or third-party rights</li>
+            <li>Infringe on intellectual property rights (copyrights, trademarks, patents, trade secrets)</li>
+            <li>Transmit harmful, threatening, abusive, or otherwise objectionable content</li>
+            <li>Impersonate any person or entity or misrepresent your affiliation</li>
+            <li>Interfere with or disrupt the Services or connected servers and networks</li>
+            <li>Attempt unauthorised access to any portion of the Services or other accounts</li>
+            <li>Use bots, scripts, or data mining tools without written permission</li>
+            <li>Reverse engineer, decompile, or disassemble any aspect of the Services</li>
+            <li>Use the Services to transmit viruses, malware, or other malicious code</li>
+            <li>Use the Services for money laundering, fraud, or terrorist financing</li>
+            <li>Sell, resell, or exploit the Services commercially without authorisation</li>
+            <li>Use the Services to develop competing products or services</li>
+          </ul>
+        </div>
+        <div class="doc-note">
+          <p><strong>Service Availability:</strong> We strive to provide reliable Services but do not guarantee uninterrupted, error-free operation. We reserve the right to modify, suspend, or discontinue any aspect of the Services at any time with or without notice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="doc-section reveal" id="s5">
+      <div class="ds-header">
+        <div class="ds-num">05</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Ownership &amp; Rights</div>
+          <h2 class="ds-title">Intellectual <em>property</em> rights</h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Our Intellectual Property</div>
+          <p>All content, features, and functionality of the Services — including text, graphics, logos, software, code, AI models, algorithms, designs, trademarks, and databases — are owned by Evon Intelligence or our licensors and are protected by international intellectual property laws. You may not copy, modify, distribute, sell, or create derivative works without our express written permission.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">User Content</div>
+          <p>You retain ownership of any content, data, or materials you provide to us ("User Content"). By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, modify, and display such content for purposes of providing and improving the Services, AI model development (in anonymised, aggregated form), and (with your consent) marketing.</p>
+          <p>You represent and warrant that you own or have the necessary rights to the User Content, that it does not violate third-party rights, and that it complies with these Terms and applicable laws.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Feedback</div>
+          <p>If you provide feedback, suggestions, or ideas about our Services, you grant us an unrestricted, perpetual, irrevocable, worldwide, royalty-free right to use, implement, and commercialise such feedback without any obligation to compensate you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="doc-section reveal" id="s6">
+      <div class="ds-header">
+        <div class="ds-num">06</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Bespoke Builds</div>
+          <h2 class="ds-title">Custom <em>development</em> projects</h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Project Scope &amp; Specifications</div>
+          <p>For custom development projects, the scope, deliverables, timeline, and pricing will be documented in a separate Statement of Work (SOW), proposal, or project agreement, which is incorporated into these Terms by reference. Changes to project scope may result in additional time and costs via formal change orders.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Intellectual Property in Custom Projects</div>
+          <ul class="doc-list">
+            <li>Upon full payment, you own the custom-developed work product created specifically for you (custom code, designs, documentation)</li>
+            <li>We retain ownership of pre-existing tools, libraries, frameworks, reusable components, and proprietary methodologies</li>
+            <li>We grant you a perpetual, non-exclusive license to use any of our pre-existing tools or components included in the deliverables, solely as integrated therein</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Acceptance &amp; Testing</div>
+          <p>You will have a reasonable testing period (typically 7–14 days) to review deliverables and notify us of any defects. Acceptance is deemed to occur if you do not provide written notice of rejection within the testing period. We will use reasonable efforts to correct verified defects.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="doc-section reveal" id="s7">
+      <div class="ds-header">
+        <div class="ds-num">07</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Platform Access</div>
+          <h2 class="ds-title">SaaS platforms <em>&amp; subscriptions</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Subscription Terms</div>
+          <p>Access to our SaaS platforms (UltraStock AI, VeriSight, etc.) requires a paid subscription. Subscriptions renew automatically unless cancelled in accordance with the cancellation process below.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Cancellation &amp; Refunds</div>
+          <ul class="doc-list">
+            <li>You may cancel at any time through your account settings</li>
+            <li>Cancellation is effective at the end of the current billing period</li>
+            <li>No refunds for partial subscription periods, except as required by law</li>
+            <li>Upon cancellation, your data may be deleted after a grace period</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Free Trials</div>
+          <p>Free trials are subject to availability and may be limited to new users. We may require payment information for free trials and will charge when the trial expires unless you cancel before the trial end date.</p>
+        </div>
+        <div class="doc-note">
+          <p><strong>Service Level Agreement:</strong> For paid subscriptions, we commit to 99.5% uptime (excluding scheduled maintenance) with maintenance windows communicated 48 hours in advance. Support response times vary by subscription tier.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="doc-section reveal" id="s8">
+      <div class="ds-header">
+        <div class="ds-num">08</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Billing</div>
+          <h2 class="ds-title">Fees <em>&amp; payment</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Payment Terms</div>
+          <p>All prices are in USD unless otherwise specified. Subscriptions are billed in advance on a monthly or annual basis; payment is due immediately upon subscription or renewal. For custom projects, payment terms are specified in the project agreement — typically including a deposit, milestone payments, and final payment upon delivery.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Late Payments</div>
+          <ul class="doc-list">
+            <li>Late payments may incur interest of 1.5% per month or the maximum allowed by law</li>
+            <li>We may suspend access to Services for accounts with overdue balances</li>
+            <li>You are responsible for all collection costs, including reasonable attorney fees</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Taxes &amp; Refund Policy</div>
+          <p>All fees are exclusive of applicable taxes, duties, or levies (including VAT, GST, sales tax), which are your responsibility. Deposits and milestone payments for custom projects are generally non-refundable once work has commenced. SaaS subscriptions are non-refundable for partial periods except as required by law.</p>
+        </div>
+        <div class="doc-note">
+          <p><strong>Payment Processing:</strong> We use third-party payment processors (Stripe, PayPal) to handle payment information. We do not store your full credit card details on our servers. Payment processing is subject to the terms and privacy policies of the payment processor.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="doc-section reveal" id="s9">
+      <div class="ds-header">
+        <div class="ds-num">09</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Non-Disclosure</div>
+          <h2 class="ds-title">Confidentiality <em>obligations</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">What Constitutes Confidential Information</div>
+          <p>"Confidential Information" means any non-public information disclosed by one party that is marked as confidential or would reasonably be considered confidential, including business strategies, financial information, customer data, technical information, source code, algorithms, trade secrets, product roadmaps, pricing, and contracts.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Obligations</div>
+          <p>The Receiving Party agrees to use Confidential Information only for the purposes of the business relationship, protect it with at least reasonable care, not disclose it to third parties without prior written consent, and limit access to employees and contractors who need to know.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Exceptions &amp; Duration</div>
+          <p>Confidentiality obligations do not apply to information that is publicly available, was rightfully known prior to disclosure, is independently developed, or must be disclosed by law (with prompt notice to the disclosing party). Confidentiality obligations survive for 3 years after disclosure or termination. Trade secrets remain protected indefinitely.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="doc-section reveal" id="s10">
+      <div class="ds-header">
+        <div class="ds-num">10</div>
+        <div class="ds-titles">
+          <div class="ds-tag">As-Is Provision</div>
+          <h2 class="ds-title">Warranties <em>&amp; disclaimers</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Limited Warranties</div>
+          <p>We warrant that we have the right to provide the Services, that our Services will be performed in a professional and workmanlike manner, that custom development work will substantially conform to agreed specifications at delivery, and that we will comply with applicable laws in performing our Services.</p>
+        </div>
+        <div class="doc-warn">
+          <p><strong>DISCLAIMER OF WARRANTIES:</strong> EXCEPT AS EXPRESSLY PROVIDED ABOVE, THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. WE DISCLAIM ALL IMPLIED WARRANTIES INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND WARRANTIES ARISING FROM COURSE OF DEALING. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE, OR THAT THE RESULTS OBTAINED WILL BE ACCURATE OR RELIABLE. AI AND MACHINE LEARNING TECHNOLOGIES ARE PROBABILISTIC AND MAY PRODUCE INACCURATE OR UNEXPECTED RESULTS. YOU ARE SOLELY RESPONSIBLE FOR EVALUATING SUITABILITY FOR YOUR INTENDED USE.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="doc-section reveal" id="s11">
+      <div class="ds-header">
+        <div class="ds-num">11</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Liability Cap</div>
+          <h2 class="ds-title">Limitation <em>of liability</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="doc-warn">
+          <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW,</strong> EVON INTELLIGENCE, ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AFFILIATES SHALL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES — INCLUDING LOSS OF PROFITS, REVENUE, DATA, BUSINESS OPPORTUNITIES, GOODWILL, OR REPUTATION — EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+          <p style="margin-top:16px"><strong>MAXIMUM LIABILITY CAP:</strong> OUR TOTAL LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS SHALL NOT EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM, OR (B) USD $500.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Exceptions</div>
+          <p>Nothing in these Terms excludes or limits our liability for death or personal injury caused by our negligence, fraud or fraudulent misrepresentation, gross negligence or wilful misconduct, or any other liability that cannot be excluded under applicable law. Some jurisdictions do not allow the limitation of liability for incidental or consequential damages — in such jurisdictions our liability is limited to the greatest extent permitted by law.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="doc-section reveal" id="s12">
+      <div class="ds-header">
+        <div class="ds-num">12</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Hold Harmless</div>
+          <h2 class="ds-title">Indemnification <em>obligations</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Your Indemnification Obligations</div>
+          <p>You agree to indemnify, defend, and hold harmless Evon Intelligence and its officers, directors, employees, agents, affiliates, and partners from and against any claims, liabilities, damages, losses, costs, and fees (including reasonable attorneys' fees) arising from: your use or misuse of the Services; your violation of these Terms or any law; User Content you provide; breach of any representation or warranty; or your negligence or wilful misconduct.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Our Indemnification Obligations</div>
+          <p>We agree to indemnify and hold you harmless from third-party claims that our Services, when used in accordance with these Terms, infringe a valid patent, copyright, or trademark — provided you promptly notify us in writing, grant us sole control of defence and settlement, and provide reasonable cooperation. This indemnification does not apply if the claim arises from your modification of the Services, your combination of the Services with other products, or your use in violation of these Terms.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="doc-section reveal" id="s13">
+      <div class="ds-header">
+        <div class="ds-num">13</div>
+        <div class="ds-titles">
+          <div class="ds-tag">AI-Specific Rules</div>
+          <h2 class="ds-title">AI &amp; machine learning <em>specific terms</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">AI Model Accuracy &amp; Limitations</div>
+          <p>You acknowledge that AI and machine learning models are probabilistic and may produce inaccurate, incomplete, or unexpected results. Model performance varies based on input data quality, use case, and environmental factors. AI outputs should be reviewed by qualified personnel before being relied upon for critical decisions. We do not guarantee any specific accuracy or performance metrics unless explicitly stated in writing.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Responsible AI Use</div>
+          <p>You agree to use our AI Services responsibly and not for purposes that violate laws, harm individuals or groups based on protected characteristics, spread misinformation or create deepfakes for malicious purposes, or automate decisions that significantly affect individuals without human oversight (e.g., credit, employment, healthcare) unless legally permitted.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Platform-Specific Notices</div>
+          <ul class="doc-list">
+            <li><strong>VeriSight</strong> — Detection accuracy is probabilistic; false positives and negatives may occur. The service should be used as one component of a comprehensive security strategy. You are responsible for final determinations about content authenticity.</li>
+            <li><strong>UltraStock AI</strong> — Forecasts are predictions based on historical data and may not reflect future reality. External factors (market changes, disruptions) may affect accuracy. You are responsible for final inventory and business decisions.</li>
+          </ul>
+        </div>
+        <div class="doc-note">
+          <p><strong>Training Data:</strong> We may use aggregated, anonymised data from your use of AI Services to improve our models. We will not use your Confidential Information or PII for model training without your consent. You may opt-out by contacting us — opting out may affect the performance or availability of certain features.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="doc-section reveal" id="s14">
+      <div class="ds-header">
+        <div class="ds-num">14</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Privacy &amp; Security</div>
+          <h2 class="ds-title">Data protection <em>&amp; privacy</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <p>Our collection, use, and protection of your personal information is governed by our <a href="privacy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. By using our Services, you consent to the practices described in the Privacy Policy.</p>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Data Processing Agreement</div>
+          <p>For Services that involve processing of personal data on your behalf (where you are the data controller and we are the data processor), we will enter into a separate Data Processing Agreement (DPA) that complies with applicable data protection laws including GDPR and CCPA.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Security Measures</div>
+          <ul class="doc-list">
+            <li>Encryption in transit (TLS/SSL) and at rest (AES-256)</li>
+            <li>Access controls, multi-factor authentication, and regular security assessments</li>
+            <li>Employee training on data protection and incident response procedures</li>
+          </ul>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Data Breach Notification</div>
+          <p>In the event of a data breach affecting your personal information, we will notify you without undue delay and in accordance with applicable law — typically within 72 hours of discovery.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="doc-section reveal" id="s15">
+      <div class="ds-header">
+        <div class="ds-num">15</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Duration &amp; Exit</div>
+          <h2 class="ds-title">Term <em>&amp; termination</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Termination by You</div>
+          <p>You may terminate your account at any time by following the cancellation process in your account settings. For custom projects, termination terms will be specified in the project agreement. You remain liable for all fees incurred prior to termination.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Termination by Us</div>
+          <p>We may suspend or terminate your access immediately, without prior notice, if you breach any provision of these Terms, your account has been inactive for an extended period, we suspect fraudulent or illegal activity, we are required to do so by law, or we decide to discontinue the Services (with reasonable notice).</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Effect of Termination</div>
+          <ul class="doc-list">
+            <li>Your license to use the Services immediately ceases</li>
+            <li>We may delete your account data after a grace period (typically 30–90 days)</li>
+            <li>You remain liable for all outstanding fees and obligations</li>
+            <li>Sections 5, 9, 10, 11, 12, 15, 17, and 19 survive termination</li>
+          </ul>
+        </div>
+        <div class="doc-note">
+          <p><strong>Data Retrieval:</strong> Before termination or within a reasonable grace period, you may request an export of your data in a standard format. We will make reasonable efforts to provide this, subject to technical limitations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16 -->
+    <div class="doc-section reveal" id="s16">
+      <div class="ds-header">
+        <div class="ds-num">16</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Regulatory Compliance</div>
+          <h2 class="ds-title">Export <em>controls</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <p>The Services may be subject to export control laws and regulations of various countries, including the United States. You agree to comply with all applicable export and import control laws, including the U.S. Export Administration Regulations and sanctions programmes administered by the Office of Foreign Assets Control (OFAC).</p>
+        <p>You represent and warrant that you are not located in a country subject to a U.S. government embargo or designated as a "terrorist supporting" country, that you are not listed on any U.S. government list of prohibited or restricted parties, and that you will not use the Services for purposes prohibited by applicable law, including the development of weapons of mass destruction.</p>
+      </div>
+    </div>
+
+    <!-- 17 -->
+    <div class="doc-section reveal" id="s17">
+      <div class="ds-header">
+        <div class="ds-num">17</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Conflicts</div>
+          <h2 class="ds-title">Dispute <em>resolution</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="sub-sec">
+          <div class="sub-sec-title">Informal Resolution</div>
+          <p>Before filing a claim, you agree to contact us at <a href="mailto:legal@evonintelligence.com">legal@evonintelligence.com</a> to attempt to resolve the dispute informally. We will attempt to resolve the dispute in good faith within 30 days.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Arbitration</div>
+          <p>For disputes exceeding $10,000, you and Evon Intelligence agree to resolve disputes through binding arbitration. The arbitrator's decision shall be final and binding. Exceptions include: either party seeking injunctive or equitable relief; small claims court disputes under $10,000; and intellectual property disputes.</p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Class Action Waiver</div>
+          <p>You and Evon Intelligence agree that disputes will be resolved on an individual basis only. <strong>You waive any right to participate in a class action lawsuit or class-wide arbitration.</strong></p>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Time Limitation</div>
+          <p>You must commence any claim or action within one (1) year after the claim arises. Claims filed after this period are permanently barred.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18 -->
+    <div class="doc-section reveal" id="s18">
+      <div class="ds-header">
+        <div class="ds-num">18</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Unforeseen Events</div>
+          <h2 class="ds-title">Force <em>majeure</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <p>We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to:</p>
+        <ul class="doc-list">
+          <li>Acts of God (earthquakes, floods, fires, storms)</li>
+          <li>War, terrorism, civil unrest, or public emergency</li>
+          <li>Government actions, laws, or regulations</li>
+          <li>Strikes, labour disputes, or supplier failures</li>
+          <li>Internet, telecommunications, or utility failures</li>
+          <li>Epidemics, pandemics, or public health emergencies</li>
+          <li>Cyberattacks or malicious activities not caused by our negligence</li>
+        </ul>
+        <p>During a force majeure event, our obligations are suspended for the duration of the event, and we will make reasonable efforts to mitigate the impact and resume performance as soon as practicable.</p>
+      </div>
+    </div>
+
+    <!-- 19 -->
+    <div class="doc-section reveal" id="s19">
+      <div class="ds-header">
+        <div class="ds-num">19</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Miscellaneous</div>
+          <h2 class="ds-title">General <em>provisions</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <div class="rights-grid">
+          <div class="rights-card">
+            <div class="rights-card-label">Entire Agreement</div>
+            <p>These Terms, together with our Privacy Policy and any applicable project agreements or SOWs, constitute the entire agreement between the parties and supersede all prior communications.</p>
+          </div>
+          <div class="rights-card">
+            <div class="rights-card-label">Severability</div>
+            <p>If any provision is found invalid or unenforceable, the remaining provisions continue in full force. The invalid provision shall be modified to the minimum extent necessary.</p>
+          </div>
+          <div class="rights-card">
+            <div class="rights-card-label">Waiver</div>
+            <p>Our failure to enforce any right or provision does not constitute a waiver. A waiver of one term is not a continuing waiver or waiver of any other term.</p>
+          </div>
+          <div class="rights-card">
+            <div class="rights-card-label">Assignment</div>
+            <p>You may not assign rights or obligations without our written consent. We may assign these Terms in connection with a merger, acquisition, or sale of assets.</p>
+          </div>
+          <div class="rights-card">
+            <div class="rights-card-label">Independent Contractors</div>
+            <p>The relationship between you and Evon Intelligence is that of independent contractors. Nothing creates a partnership, joint venture, employment, agency, or franchise relationship.</p>
+          </div>
+          <div class="rights-card">
+            <div class="rights-card-label">Language</div>
+            <p>These Terms are written in English. If translated, the English version shall prevail in case of any conflict or inconsistency.</p>
+          </div>
+        </div>
+        <div class="sub-sec">
+          <div class="sub-sec-title">Notices</div>
+          <p>All notices under these Terms must be in writing. Notices to Evon Intelligence should be sent to <a href="mailto:legal@evonintelligence.com">legal@evonintelligence.com</a>. Notices to you may be sent to the email address associated with your account and are deemed received when sent.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20 -->
+    <div class="doc-section reveal" id="s20">
+      <div class="ds-header">
+        <div class="ds-num">20</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Inclusive Design</div>
+          <h2 class="ds-title">Accessibility <em>commitment</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <p>We are committed to making our Services accessible to individuals with disabilities. If you encounter any accessibility barriers or have suggestions for improvement, please contact us at <a href="mailto:accessibility@evonintelligence.com">accessibility@evonintelligence.com</a> and we will work to address your needs promptly.</p>
+      </div>
+    </div>
+
+    <!-- 21 -->
+    <div class="doc-section reveal" id="s21">
+      <div class="ds-header">
+        <div class="ds-num">21</div>
+        <div class="ds-titles">
+          <div class="ds-tag">Get in Touch</div>
+          <h2 class="ds-title">Feedback <em>&amp; contact</em></h2>
+        </div>
+      </div>
+      <div class="doc-body">
+        <p>If you have any questions about these Terms or our Services, please contact us. For reporting violations of these Terms, please email <a href="mailto:abuse@evonintelligence.com">abuse@evonintelligence.com</a>.</p>
+        <div class="contact-card">
+          <div class="contact-card-title">Evon Intelligence</div>
+          <div class="contact-row"><span>Legal</span><a href="mailto:legal@evonintelligence.com">legal@evonintelligence.com</a></div>
+          <div class="contact-row"><span>General</span><a href="mailto:contact@evonintelligence.com">contact@evonintelligence.com</a></div>
+          <div class="contact-row"><span>Abuse</span><a href="mailto:abuse@evonintelligence.com">abuse@evonintelligence.com</a></div>
+          <div class="contact-row"><span>Website</span><a href="https://aevonintelligence.netlify.app">aevonintelligence.netlify.app</a></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ACCEPTANCE BANNER -->
+<div class="accept-banner">
+  <p>By using our Services, you acknowledge that you have read, understood, and agree to be bound by these <em>Terms &amp; Conditions</em>.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <a href="index.html" class="f-logo">Evon<b>.</b> Intelligence</a>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="f-copy">© 2026 Evon Intelligence</div>
+  <div class="f-legal">
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html" class="current">Terms</a>
+  </div>
+</footer>
+
+<script>
+// Header scroll
+window.addEventListener('scroll', function () {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Drawer
+function toggleD() {
+  var d = document.getElementById('drawer'), b = document.getElementById('burger');
+  d.classList.toggle('open'); b.classList.toggle('open');
+  document.body.style.overflow = d.classList.contains('open') ? 'hidden' : '';
+}
+function closeD() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeD(); });
+
+// Scroll reveal
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+// TOC active highlight
+var sections = document.querySelectorAll('.doc-section');
+var tocLinks = document.querySelectorAll('.toc-link');
+var ioToc = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) {
+      tocLinks.forEach(function (l) { l.classList.remove('active'); });
+      var id = e.target.id;
+      var active = document.querySelector('.toc-link[href="#' + id + '"]');
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(function (s) { ioToc.observe(s); });
+</script>
+</body>
+</html>
